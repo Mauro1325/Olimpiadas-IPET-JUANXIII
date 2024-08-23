@@ -269,7 +269,7 @@ body {
         overflow: hidden;
         opacity: 0;
         /* Inicialmente escondida */
-        transition: max-height 0.3s ease-out, opacity 0.2s ease-out, transform 0.1s ease-out;
+        transition: max-height 0.3s ease-out, opacity 0.2s ease-out, transform 0.0s ease-out;
         /* Transición suave */
     }
 
