@@ -4,238 +4,125 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Láser Nd:YAG y Electromedicina</title>
-    <style>
-      body {
-        background-color: #2e2e2e;
-        color: #e0e0e0;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        text-align: center;
-      }
-
-      .header {
-        padding: 20px;
-        background-color: #004d00;
-        color: #ffffff;
-      }
-
-      h1 {
-        margin: 0;
-        font-size: 2.5rem;
-      }
-
-      .interactive-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 20px;
-        margin-top: 20px;
-      }
-
-      .interactive-card {
-        background-color: #333;
-        border: 1px solid #555;
-        border-radius: 10px;
-        width: 300px;
-        margin: 15px;
-        cursor: pointer;
-        overflow: hidden;
-        position: relative;
-        transition: all 0.6s ease;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .interactive-card h2 {
-        padding: 10px;
-        font-size: 1.5rem;
-        background-color: #005600;
-        color: #e0e0e0;
-        border-radius: 10px 10px 0 0;
-        margin: 0;
-      }
-
-      .card-content {
-        padding: 20px;
-        display: none;
-        height: 0;
-        opacity: 0;
-        transition: height 0.6s ease, opacity 0.6s ease;
-      }
-
-      .interactive-card.expanded {
-        width: 90%;
-        max-width: 900px;
-        margin: 20px auto;
-        height: auto;
-        border-radius: 10px;
-        z-index: 1000;
-      }
-
-      .interactive-card.expanded .card-content {
-        display: block;
-        height: auto;
-        opacity: 1;
-        padding: 20px;
-      }
-
-      .description {
-        padding: 10px;
-        background-color: #004d00;
-        color: #b3b3b3;
-        margin-top: 10px;
-        border-radius: 5px;
-      }
-
-      .footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #004d00;
-        color: #b3b3b3;
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-      }
-
-      .video-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin: 20px 0;
-      }
-
-      .video-container iframe {
-        margin: 10px;
-        border: none;
-        border-radius: 10px;
-        transition: transform 0.3s ease;
-      }
-
-      .video-container iframe:hover {
-        transform: scale(1.05);
-      }
-    </style>
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="header">
-      <h1>Láser Nd:YAG y Electromedicina</h1>
+    <div class="intro-animation">
+      <div class="intro-text">
+        <h1>Olimpíadas Instancia Institucional Electrónica</h1>
+        <h2>Representando IPET JUAN XXIII</h2>
+        <h3>Alumnos: Juan Pérez, Ana García, Carlos López, María Rodríguez</h3>
+      </div>
     </div>
+    <div class="title">Láser Nd:YAG y Electromedicina</div>
 
     <div class="interactive-container">
-      <!-- Cuadro interactivo 1 -->
-      <div class="interactive-card" id="card1" onclick="expandCard(this)">
-        <h2>¿Qué es un Láser?</h2>
-        <div class="card-content">
-          <p>
-            El término "láser" proviene de las siglas en inglés "Light Amplification by Stimulated Emission of Radiation", que en español significa amplificación de luz por emisión estimulada de radiación. Un láser es esencialmente un dispositivo que clona fotones, los cuales son pequeños paquetes de luz. Este proceso se basa en la emisión estimulada, donde un electrón en un nivel de energía superior desciende a un nivel inferior, emitiendo un fotón idéntico al que provocó el cambio.
-          </p>
-          <p>
-            Para que esto ocurra de manera eficiente, los electrones deben estar en un estado de mayor energía, lo que se denomina un átomo excitado. En un láser, los átomos que emiten luz se encuentran en un medio activo, que es el corazón del láser, y se mantienen excitados mediante un proceso llamado bombeo. Este medio activo se encuentra dentro de una cavidad formada por dos espejos: uno perfecto y otro que permite que una pequeña parte de la luz salga, mientras que el resto rebota dentro de la cavidad para estimular más emisiones.
-          </p>
+      <div class="card-list">
+        <div class="interactive-card" onclick="expandCard(this, 'content1')">
+          <h2>Principios Básicos del Láser</h2>
+          <div class="description">Cómo funciona la emisión de un láser.</div>
         </div>
-        <div class="description">
-          Información básica sobre el funcionamiento del láser y el concepto de emisión estimulada.
+
+        <div class="interactive-card" onclick="expandCard(this, 'content2')">
+          <h2>Aplicaciones Médicas</h2>
+          <div class="description">Uso de láseres en tratamientos médicos.</div>
+        </div>
+
+        <div class="interactive-card" onclick="expandCard(this, 'content4')">
+          <h2>(titulo interactivo)</h2>
+          <div class="description">(descripcion).</div>
+        </div>
+
+        <div class="interactive-card" onclick="expandCard(this, 'content3')">
+          <h2>El Láser Nd:YAG</h2>
+          <div class="description">
+            Características y aplicaciones del láser Nd:YAG.
+          </div>
         </div>
       </div>
 
-      <!-- Cuadro interactivo 2 -->
-      <div class="interactive-card" id="card2" onclick="expandCard(this)">
-        <h2>Propiedades de la Luz Láser</h2>
-        <div class="card-content">
-          <p>
-            El proceso de emisión estimulada dota a la luz láser de tres propiedades clave:
-            <ul>
-              <li><strong>Direccionalidad:</strong> La luz láser se emite en una sola dirección, concentrando mucha energía en un área pequeña.</li>
-              <li><strong>Monocromaticidad:</strong> La luz láser tiene una longitud de onda específica, lo que la hace visible en un solo color.</li>
-              <li><strong>Coherencia:</strong> Los fotones emitidos tienen la misma fase, lo que significa que las ondas de luz viajan de manera ordenada.</li>
-            </ul>
-          </p>
-        </div>
-        <div class="description">
-          Explicación sobre las propiedades únicas de la luz láser.
-        </div>
+      <div
+        class="expanded-content"
+        id="content1"
+        onclick="collapseCard('content1', this)"
+      >
+        <h2>Principios Básicos del Láser</h2>
+        <p>
+          Un láser funciona mediante la emisión estimulada de radiación, donde
+          los electrones en átomos excitados emiten fotones de manera coherente
+          cuando regresan a un estado de energía más bajo. Este proceso es
+          fundamental para la creación del haz de láser, que puede concentrar
+          una gran cantidad de energía en un área muy pequeña.
+        </p>
       </div>
 
-      <!-- Cuadro interactivo 3 -->
-      <div class="interactive-card" id="card3" onclick="expandCard(this)">
-        <h2>Tipos de Láseres</h2>
-        <div class="card-content">
-          <p>
-            Existen dos tipos principales de láseres:
-            <ul>
-              <li><strong>Láseres continuos:</strong> Emiten luz de manera ininterrumpida.</li>
-              <li><strong>Láseres pulsados:</strong> Emiten luz en pulsos breves, permitiendo alcanzar potencias extremadamente altas en intervalos de tiempo muy cortos, incluso en el rango de los femtosegundos (10<sup>-15</sup> segundos).</li>
-            </ul>
-          </p>
-        </div>
-        <div class="description">
-          Diferencias entre los tipos de láseres y sus características principales.
-        </div>
+      <div
+        class="expanded-content"
+        id="content4"
+        onclick="collapseCard('content4', this)"
+      >
+        <h2>(Titulo)</h2>
+        <p>(texto)</p>
       </div>
 
-      <!-- Cuadro interactivo 4 -->
-      <div class="interactive-card" id="card4" onclick="expandCard(this)">
-        <h2>Aplicaciones de los Láseres</h2>
-        <div class="card-content">
-          <p>
-            Los láseres tienen una amplia gama de aplicaciones, desde la medicina y la industria hasta la investigación científica y las telecomunicaciones. En medicina, por ejemplo, se utilizan para cortar tejidos con gran precisión y en la fabricación de prótesis. En la industria, los láseres son esenciales para realizar cortes de precisión, grabados y soldaduras. En el ámbito científico, se emplean para estudiar la interacción de la luz con la materia y medir distancias con gran precisión.
-          </p>
-        </div>
-        <div class="description">
-          Aplicaciones prácticas de los láseres en distintos campos.
-        </div>
+      <div
+        class="expanded-content"
+        id="content2"
+        onclick="collapseCard('content2', this)"
+      >
+        <h2>Aplicaciones Médicas</h2>
+        <p>
+          En medicina, los láseres se utilizan para una variedad de
+          procedimientos como la cirugía ocular, el tratamiento de cáncer y la
+          eliminación de tatuajes. La precisión y el control que ofrece un láser
+          permiten intervenciones mínimamente invasivas y con una recuperación
+          rápida.
+        </p>
       </div>
 
-      <!-- Cuadro interactivo 5 -->
-      <div class="interactive-card" id="card5" onclick="expandCard(this)">
-        <h2>Seguridad en el Uso de Láseres</h2>
-        <div class="card-content">
-          <p>
-            Debido a la alta intensidad de la luz láser, su uso indebido puede causar daños severos, especialmente en los ojos. Es crucial seguir todas las medidas de seguridad, como no apuntar el láser a los ojos, evitar reflejos de luz que puedan ser peligrosos, y usar la protección adecuada cuando se trabaja con láseres potentes.
-          </p>
-        </div>
-        <div class="description">
-          Recomendaciones para usar láseres de manera segura.
-        </div>
-      </div>
-
-      <!-- Cuadro interactivo 6 -->
-      <div class="interactive-card" id="card6" onclick="expandCard(this)">
-        <h2>Diodos Láser: Funcionamiento y Características</h2>
-        <div class="card-content">
-          <p>
-            Un diodo láser es un tipo específico de láser que utiliza semiconductores para generar luz coherente. Este tipo de láser es muy utilizado debido a su simplicidad y bajo costo de manufactura. Los diodos láser tienen la capacidad de concentrar un haz de luz en un punto específico, lo que les permite llegar a grandes distancias con una coherencia tanto espacial como temporal.
-          </p>
-        </div>
-        <div class="description">
-          Información sobre el funcionamiento y las características de los diodos láser.
-        </div>
+      <div
+        class="expanded-content"
+        id="content3"
+        onclick="collapseCard('content3', this)"
+      >
+        <h2>El Láser Nd:YAG</h2>
+        <p>
+          El láser Nd:YAG (neodimio: granate de itrio y aluminio) es uno de los
+          tipos más comunes de láseres de estado sólido. Opera en el espectro
+          infrarrojo cercano con una longitud de onda de 1064 nm. Se utiliza en
+          una amplia variedad de aplicaciones, incluidas la cirugía
+          oftalmológica, la dermatología, y la industria del corte y soldadura
+          de metales. Su capacidad para emitir pulsos de alta energía en tiempos
+          extremadamente cortos lo hace especialmente útil para procedimientos
+          que requieren precisión sin causar daño en áreas adyacentes.
+        </p>
       </div>
     </div>
 
-    <div class="video-container">
-      <!-- Video 1 -->
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video explicativo" allowfullscreen></iframe>
-      <!-- Video 2 -->
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video explicativo" allowfullscreen></iframe>
+    <div class="reference-videos">
+      <h3>Videos de referencia</h3>
+      <div class="video-container">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/HpRzNWwOiuI"
+          title="Video sobre Láser Nd:YAG"
+          allowfullscreen
+        ></iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/BFfD1vG5qA4"
+          title="Video explicativo sobre la emisión estimulada de radiación"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
 
     <div class="footer">
-      OLIMPÍADA NACIONAL DE ETP 2024 INSTANCIA INSTITUCIONAL ELECTRÓNICA © 2024 Láser Nd:YAG IPET JUANXXIII séptimo electrónica
+      <p>© 2024 Proyecto Educativo sobre Láseres y Electromedicina</p>
     </div>
 
-    <script>
-      function expandCard(card) {
-        const allCards = document.querySelectorAll('.interactive-card');
-        allCards.forEach((c) => {
-          if (c !== card) {
-            c.classList.remove('expanded');
-          }
-        });
-        card.classList.toggle('expanded');
-      }
-    </script>
+    <script src="js/scripts.js"></script>
   </body>
 </html>
