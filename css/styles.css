@@ -9,6 +9,8 @@ body {
     background-color: #f4f4f4;
     min-height: 100vh;
     justify-content: space-between;
+    padding-bottom: 50px;
+    /* Espacio adicional para el pie de página */
 }
 
 .title {
@@ -31,31 +33,107 @@ body {
     position: relative;
 }
 
-.reference-videos {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px 0;
-    text-align: center;
-}
-
-.reference-videos h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.video-container {
+/* Estilos para Tarjetas Interactivas */
+.card-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
 }
 
-iframe {
-    border: none;
+.card-list.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
+    gap: 10px;
+    z-index: 1;
+}
+
+.interactive-card {
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-width: 150px;
+    max-width: 200px;
+    position: relative;
+    z-index: 1;
 }
 
+.interactive-card:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    background-color: #00bfff;
+    /* Color celeste/neón */
+    color: white;
+}
+
+.interactive-card.hidden {
+    transform: translateX(50px);
+    /* Desplaza hacia la derecha */
+    opacity: 0.5;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.interactive-card h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.interactive-card .description {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Estilos para Tarjetas Expandidas */
+.expanded-content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+    position: absolute;
+    width: calc(90% - 100px);
+    margin-left: 300px;
+    max-height: 0;
+    /* Inicialmente escondida */
+    overflow: hidden;
+    opacity: 0;
+    /* Inicialmente escondida */
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease-out;
+    /* Transición suave */
+}
+
+.expanded-content.active {
+    max-height: 1000px;
+    /* Altura suficiente para el contenido */
+    opacity: 1;
+    transform: scale(1);
+    /* No hay escalado cuando está activa */
+    z-index: 2;
+}
+
+.expanded-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.expanded-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Estilos para el Pie de Página */
 .footer {
     width: 100%;
     background-color: #333;
@@ -64,8 +142,11 @@ iframe {
     padding: 10px 0;
     position: fixed;
     bottom: 0;
+    z-index: 1;
+    /* Asegura que el pie de página esté sobre otros contenidos */
 }
 
+/* Animaciones Introductorias */
 .intro-animation {
     position: fixed;
     top: 0;
@@ -155,8 +236,6 @@ iframe {
         cursor: pointer;
         min-width: 150px;
         max-width: 200px;
-        visibility: visible;
-        opacity: 1;
         position: relative;
         transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     }
@@ -164,29 +243,16 @@ iframe {
     .interactive-card:hover {
         transform: scale(1.05) translateY(-10px);
         box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
-        background-color: #00bfff; /* Color celeste/neón */
+        background-color: #00bfff;
+        /* Color celeste/neón */
         color: white;
     }
 
-    .interactive-card:hover::before {
-        border-color: rgba(255, 255, 255, 0.7); /* Aumenta la visibilidad del borde */
-    }
-
     .interactive-card.hidden {
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0s 0.3s, opacity 0.3s ease;
-    }
-
-    .interactive-card h2 {
-        margin-top: 0;
-        margin-bottom: 16px;
-        font-size: 24px;
-    }
-
-    .interactive-card .description {
-        font-size: 14px;
-        color: #777;
+        transform: translateX(25px);
+        /* Desplaza hacia la derecha */
+        opacity: 0.5;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .expanded-content {
@@ -194,14 +260,25 @@ iframe {
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: none;
-        position: relative;
+        display: block;
+        position: absolute;
         width: calc(90% - 100px);
-        margin-left: 250px;
+        margin-left: 300px;
+        max-height: 0;
+        /* Inicialmente escondida */
+        overflow: hidden;
+        opacity: 0;
+        /* Inicialmente escondida */
+        transition: max-height 0.3s ease-out, opacity 0.2s ease-out, transform 0.1s ease-out;
+        /* Transición suave */
     }
 
     .expanded-content.active {
-        display: block;
+        max-height: 1000px;
+        /* Altura suficiente para el contenido */
+        opacity: 1;
+        transform: scale(1);
+        /* No hay escalado cuando está activa */
         z-index: 2;
     }
 
@@ -217,37 +294,104 @@ iframe {
         border-radius: 8px;
         margin-top: 10px;
     }
+
+    .reference-videos {
+        width: 60%;
+        max-width: 1200px;
+        margin: 40px auto;
+        text-align: center;
+        transition: margin-top 0.5s ease;
+        /* Agrega una transición suave */
+    }
+
+    .reference-videos h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .video-container iframe {
+        width: calc(50% - 20px);
+        height: 300px;
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .video-container iframe:hover {
+        transform: scale(1.05);
+    }
+
+    .footer {
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        z-index: 1;
+        /* Asegura que el pie de página esté sobre otros contenidos */
+    }
 }
 
-/* Estilos Específicos para Móviles */
+/* Estilos para Celulares */
 @media (max-width: 768px) {
+    .interactive-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
     .card-list {
         flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        padding: 0 10px;
+        align-items: center;
     }
 
     .interactive-card {
-        width: 100%;
+        min-width: 90%;
+        max-width: 90%;
+        margin-bottom: 10px;
         transform: scale(1);
     }
 
-    .interactive-card:hover {
-        transform: scale(1.03) translateY(-5px);
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-        background-color: #00bfff; /* Color celeste/neón */
-        color: white;
-    }
-
     .expanded-content {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 10px;
+        width: calc(100% - 20px);
+        margin: 0 10px;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease-out, opacity 0.2s ease-out, transform 0.2s ease-out;
     }
 
-    iframe {
-        width: 100%;
+    .reference-videos {
+        width: 90%;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .video-container iframe {
+        width: calc(100% - 20px);
         height: 200px;
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
     }
 }
